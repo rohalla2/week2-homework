@@ -5,6 +5,8 @@ puts "Enter an address, city or zipcode: "
 address = gets
 address = address.chomp
 
+address.tr!(" ", "+")
+
 json_data = open("http://maps.googleapis.com/maps/api/geocode/json?address=#{address}&sensor=false").read
 
 data = JSON.parse(json_data)
