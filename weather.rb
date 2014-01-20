@@ -9,7 +9,11 @@ address = gets
 address = address.chomp
 address.tr!(" ", "+")
 
-#fetch google api data
+#fetch google api lat and long data.
+#google is better at interpolating locations
+#than open weather map, so I decided to use
+#google to find the lat/long and pass it to 
+#the weather api
 json_data = open("http://maps.googleapis.com/maps/api/geocode/json?address=#{address}&sensor=false").read
 data = JSON.parse(json_data)
 
